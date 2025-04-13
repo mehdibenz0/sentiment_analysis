@@ -30,7 +30,8 @@ In this project, kids will:
 
 ```bash
 
-pip install tensorflow opencv-python numpy
+pip install -r requirements.txt
+
 
 ```
 
