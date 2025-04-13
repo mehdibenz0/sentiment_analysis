@@ -18,9 +18,11 @@ In this project, kids will:
 
 | File             | Description |
 |------------------|-------------|
-| `save_images.py` | Code to take pictures of classroom objects using OpenCV and organize them into folders. |
-| `train_model.py` | Code to train a simple neural network using TensorFlow. Starter code is provided with comments and blanks to fill in. |
+| `save_images.py` | Code to take pictures of classroom objects using OpenCV and organize them into folders
+| `train_model.py` | Code to train a simple machine learning model (like a neural network) using a library like TensorFlow. Starter code is provided with comments and blanks to fill in.
+| `preprocess.py` | processes the images collected for training. It resizes the images, flattens them into 1D arrays, and prepares the labels for the machine learning model. The processed images and labels are then saved to a file for later use in training.
 | `predict_webcam.py` | Provided code that uses the trained model to recognize objects in real time. |
+
 
 ---
 
