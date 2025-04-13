@@ -24,8 +24,6 @@ In this project, kids will:
 
 ---
 
-## 🧪 Getting Started
-
 ### 1. Install requirements
 
 ```bash
