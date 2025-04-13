@@ -43,8 +43,9 @@ Create 20–30 images per object (pen, glasses, etc.).
 ### 3. Train your model
 ```bash
 python train_model.py
-This script will process the images and train a model called object_detector.h5.
 ```
+This script will process the images and train a model called object_detector.h5.
+
 ### 4. Run real-time prediction!
 ```bash
 python predict_webcam.py
