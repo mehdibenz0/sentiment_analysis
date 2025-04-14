@@ -3,7 +3,7 @@
 </p>
 
 <p align="right">
-  <img src="images/techspark-700x208.png" alt="TechSpark Academy Logo" width="210"/>
+  <img src="images/techspark_logo.png" alt="TechSpark Academy Logo" width="210"/>
 </p>
 
 
