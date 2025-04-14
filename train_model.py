@@ -1,43 +1,34 @@
-# train_model.py
-import tensorflow as tf
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
-import os
+import pickle
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
 
-img_size = (64, 64)
-batch_size = 8
+# Load data
+with open("dataset.pkl", "rb") as f:
+    X, y = pickle.load(f)
 
-datagen = ImageDataGenerator(
-    rescale=1./255,
-    validation_split=0.2
-)
+# Flatten images
+X_flat = X.reshape(len(X), -1)
 
-train_data = datagen.flow_from_directory(
-    'data/',
-    target_size=img_size,
-    batch_size=batch_size,
-    class_mode='categorical',
-    subset='training'
-)
+# Encode labels
+le = LabelEncoder()
+y_encoded = le.fit_transform(y)
 
-val_data = datagen.flow_from_directory(
-    'data/',
-    target_size=img_size,
-    batch_size=batch_size,
-    class_mode='categorical',
-    subset='validation'
-)
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X_flat, y_encoded, test_size=0.2, random_state=42)
 
-model = tf.keras.Sequential([
-    tf.keras.layers.Conv2D(16, (3, 3), activation='relu', input_shape=(64, 64, 3)),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    tf.keras.layers.Conv2D(32, (3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(2, 2),
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(64, activation='relu'),
-    tf.keras.layers.Dense(4, activation='softmax')
-])
+# Train model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
 
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+# Evaluate
+y_pred = model.predict(X_test)
+acc = accuracy_score(y_test, y_pred)
+print(f"Model accuracy: {acc:.2f}")
 
-model.fit(train_data, validation_data=val_data, epochs=10)
-model.save("object_detector.h5")
+# Save model and label encoder
+with open("model.pkl", "wb") as f:
+    pickle.dump(model, f)
+with open("labels.pkl", "wb") as f:
+    pickle.dump(le, f)
