@@ -7,14 +7,14 @@ A fun and simple machine learning project designed for kids to learn how compute
 In this project, kids will:
 - Collect images of objects using a webcam
 - Train a machine learning model to recognize them
-- Test the model in real-time during a live demo for parents!
+- Test the model in real-time during a live demo!
 
 ---
 
 
 ---
 
-## What the kids will code
+## Files Description
 
 | File             | Description |
 |------------------|-------------|
@@ -43,13 +43,21 @@ python save_images.py
 ```
 Create 20–30 images per object (pen, glasses, etc.).
 
-### 3. Train your model
+### 3. Preprocess the images
+This step resizes all images to a fixed size and saves them in a format the model can use:
+
+```bash
+python preprocess.py
+```
+This will create a file called dataset.pkl which contains the image data and labels
+
+### 4. Train your model
 ```bash
 python train_model.py
 ```
 This script will process the images and train a model called object_detector.h5.
 
-### 4. Run real-time prediction!
+### 5. Run real-time prediction!
 ```bash
 python predict_webcam.py
 ```
