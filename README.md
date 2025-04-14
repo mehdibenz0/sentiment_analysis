@@ -23,7 +23,8 @@ In this project, you will:
     <img src="images/mug.png" alt="Object Example" width="500"/>
     <img src="images/empty.png" alt="Object Example" width="500"/>
 </div>
-##  Files Description
+
+## Files Description
 
 | File             | Description |
 |------------------|-------------|
